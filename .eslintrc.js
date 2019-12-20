@@ -16,5 +16,11 @@ module.exports = {
         }
     },
     parser: 'babel-eslint',
-    extends: ['@react-native-community', 'prettier', 'prettier/react']
+    extends: [
+        'eslint:recommended',
+        'plugin:react/recommended',
+        '@react-native-community',
+        'prettier',
+        'prettier/react'
+    ]
 };
