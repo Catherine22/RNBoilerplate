@@ -1,23 +1,26 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, ScrollView, Text, StatusBar } from 'react-native';
+import Dashboard from './views/dashboard/Dashboard';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-const App = () => {
-    return (
-        <>
-            <StatusBar barStyle="dark-content" />
-            <SafeAreaView>
-                <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
-                    <Text>Hello</Text>
-                </ScrollView>
-            </SafeAreaView>
-        </>
-    );
+const routeConfigs = {
+    Dashboard: {
+        screen: Dashboard,
+        navigationOptions: () => ({
+            title: 'Dashboard'
+        })
+    }
 };
 
-const styles = StyleSheet.create({
-    scrollView: {
-        backgroundColor: '#ffffff'
+const stackNavigatorConfig = {
+    initialRouteName: 'Dashboard',
+    defaultNavigationOptions: {
+        title: 'Unknown',
+        mode: 'card', // [card, modal]
+        headerMode: 'float' // [float, screen, none]
     }
-});
+};
 
+const MainNavigator = createStackNavigator(routeConfigs, stackNavigatorConfig);
+const App = createAppContainer(MainNavigator);
 export default App;

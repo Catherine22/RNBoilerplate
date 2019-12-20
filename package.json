@@ -8,6 +8,7 @@
         "start": "react-native start",
         "test": "jest",
         "lint": "eslint .",
+        "reset": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules",
         "postinstall": "npx jetify"
     },
     "dependencies": {
@@ -22,6 +23,7 @@
         "react-native-reanimated": "^1.4.0",
         "react-native-screens": "^2.0.0-alpha.20",
         "react-navigation": "^4.0.10",
+        "react-navigation-stack": "^1.10.3",
         "typescript": "^3.7.3"
     },
     "devDependencies": {
