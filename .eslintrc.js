@@ -17,14 +17,9 @@ module.exports = {
     },
     parser: 'babel-eslint',
     extends: [
-        'typescript',
-        'typescript/react',
-        'typescript/prettier',
-        'typescript/prettier-react',
-        'eslint:recommended',
-        'plugin:react/recommended',
         '@react-native-community',
         'prettier',
+        'prettier/@typescript-eslint',
         'prettier/react'
     ]
 };
