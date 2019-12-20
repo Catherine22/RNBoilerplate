@@ -10,7 +10,16 @@
         "noEmit": true,
         "strict": true,
         "target": "esnext",
-        "resolveJsonModule": true
+
+        // .json file imports
+        "resolveJsonModule": true,
+
+        // Path Aliases
+        "baseUrl": ".",
+        "paths": {
+            "@": ["src/*"],
+            "tests": ["tests/*"]
+        }
     },
     "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]
 }
