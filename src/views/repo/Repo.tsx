@@ -7,7 +7,7 @@ type Props = {
     navigation: NavigationStackProp<{ title: string }>;
 };
 
-class Dashboard extends React.Component<Props> {
+class Repo extends React.Component<Props> {
     render() {
         return (
             <>
@@ -16,7 +16,7 @@ class Dashboard extends React.Component<Props> {
                     <ScrollView
                         contentInsetAdjustmentBehavior="automatic"
                         style={styles.scrollView}>
-                        <Text>Dashboard</Text>
+                        <Text>Repo</Text>
                     </ScrollView>
                 </SafeAreaView>
             </>
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Dashboard;
+export default Repo;

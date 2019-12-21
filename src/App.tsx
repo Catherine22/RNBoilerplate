@@ -1,5 +1,8 @@
 import React from 'react';
 import DashboardNavigator from './views/dashboard/DashboardNavigator';
+import RepoNavigator from './views/repo/RepoNavigator';
+import ProfileNavigator from './views/profile/ProfileNavigator';
+import SettingsNavigator from './views/settings/SettingsNavigator';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { Colors } from './styles';
@@ -9,6 +12,24 @@ const routeConfigs = {
         screen: DashboardNavigator,
         navigationOptions: () => ({
             title: 'Dashboard'
+        })
+    },
+    Repo: {
+        screen: RepoNavigator,
+        navigationOptions: () => ({
+            title: 'Repo'
+        })
+    },
+    Profile: {
+        screen: ProfileNavigator,
+        navigationOptions: () => ({
+            title: 'Profile'
+        })
+    },
+    Settings: {
+        screen: SettingsNavigator,
+        navigationOptions: () => ({
+            title: 'Settings'
         })
     }
 };
