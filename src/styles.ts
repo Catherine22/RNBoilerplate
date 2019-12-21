@@ -6,6 +6,8 @@ const Colors = {
 
     background: '#ffffff',
     surface: '#ffffff',
-    error: '#b00020'
+    error: '#b00020',
+    placeHolder: '#c3c3c3'
 };
+
 export { Colors };
