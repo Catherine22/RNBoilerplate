@@ -1,32 +1,51 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, TextInput, ViewStyle, StyleProp } from 'react-native';
 import { Colors } from '../../styles';
 
 interface Props {
-    placeHolder: string;
+    placeHolder?: string;
     onChangeText: (text: String) => void;
-    style: StyleProp<ViewStyle>;
+    style?: StyleProp<ViewStyle>;
 }
 
 interface Styles {
     view: ViewStyle;
 }
 
-const CTextInput: FC<Props> = props => {
-    const [value, onChangeText] = useState('');
-    useEffect(() => {
-        props.onChangeText(value);
-    });
+interface State {
+    value: string;
+}
 
-    return (
-        <TextInput
-            style={[styles.view, props.style]}
-            onChangeText={text => onChangeText(text)}
-            value={value}
-            placeholder={props.placeHolder}
-        />
-    );
-};
+class CTextInput extends Component<Props, State> {
+    constructor(props: Props) {
+        super(props);
+        this.state = {
+            value: ''
+        };
+    }
+
+    render() {
+        return (
+            <TextInput
+                style={[styles.view, this.props.style]}
+                onChangeText={this.onChangeText}
+                value={this.state.value}
+                placeholder={this.props.placeHolder}
+            />
+        );
+    }
+
+    onChangeText = (text: string) => {
+        this.setState(
+            {
+                value: text
+            },
+            () => {
+                this.props.onChangeText(text);
+            }
+        );
+    };
+}
 
 const styles = StyleSheet.create<Styles>({
     view: {
@@ -36,4 +55,4 @@ const styles = StyleSheet.create<Styles>({
     }
 });
 
-export { CTextInput };
+export default CTextInput;

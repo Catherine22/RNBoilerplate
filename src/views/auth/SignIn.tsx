@@ -1,41 +1,62 @@
-import React from 'react';
-import { SafeAreaView, StyleSheet, ScrollView, Text, StatusBar, Dimensions } from 'react-native';
+import React, { Component } from 'react';
+import { SafeAreaView, StyleSheet, StatusBar, Text, Button, Dimensions } from 'react-native';
+import { NavigationStackProp } from 'react-navigation-stack';
 import { Colors } from '../../styles';
-import { CTextInput, Card } from '../../components/common';
+import CTextInput from '../../components/common/CTextInput';
+import Card from '../../components/common/Card';
 
-const SignIn = () => {
-    return (
-        <>
-            <StatusBar barStyle="dark-content" />
-            <SafeAreaView>
-                <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
-                    <Card>
+type Props = {
+    navigation: NavigationStackProp;
+};
+
+class SignIn extends Component {
+    constructor(props: Props) {
+        super(props);
+        this.state = {
+            clientId: null
+        };
+    }
+
+    render() {
+        return (
+            <>
+                <StatusBar barStyle="dark-content" />
+                <SafeAreaView style={styles.container}>
+                    <Card style={styles.cardView}>
+                        <Text>My Auth app</Text>
                         <CTextInput
-                            placeHolder="clientId"
-                            onChangeText={text => onChangeText(text)}
-                            style={styles.inputText}>
-                            SignIn
-                        </CTextInput>
+                            placeHolder="Client ID"
+                            onChangeText={this.updateClientId}
+                            style={styles.inputText}
+                        />
+                        <Button title="Sign in" onPress={this.signIn}></Button>
                     </Card>
-                </ScrollView>
-            </SafeAreaView>
-        </>
-    );
-};
+                </SafeAreaView>
+            </>
+        );
+    }
 
-const onChangeText = (clientId: String) => {
-    console.log('clientId', clientId);
-};
+    updateClientId = (clientId: String) => {
+        this.setState({ clientId });
+    };
 
-const width50 = Dimensions.get('window').width / 2;
+    signIn = () => {
+        console.log('clientId', this.state);
+    };
+}
+
 const styles = StyleSheet.create({
-    scrollView: {
-        backgroundColor: Colors.background
+    container: {
+        height: Dimensions.get('window').height,
+        justifyContent: 'center'
+    },
+    cardView: {
+        alignItems: 'center', // horizontal centre
+        justifyContent: 'center', // vertical centre
+        height: 200
     },
     inputText: {
-        width: width50,
-        marginHorizontal: 8,
-        marginTop: 8
+        width: Dimensions.get('window').width / 2
     }
 });
 

@@ -3,24 +3,25 @@ import { StyleSheet, View, ViewStyle, StyleProp } from 'react-native';
 import { Colors } from '../../styles';
 
 interface Props {
-    // style: StyleProp<ViewStyle>;
+    style?: StyleProp<ViewStyle>;
 }
 
 interface Styles {
-    view: ViewStyle;
+    card: ViewStyle;
 }
 
 const Card: FC<Props> = props => {
-    return <View style={[styles.view /*, props.style*/]}>{props.children}</View>;
+    return <View style={[styles.card, props.style]}>{props.children}</View>;
 };
 
 const styles = StyleSheet.create<Styles>({
-    view: {
-        marginVertical: 24,
+    card: {
+        marginHorizontal: 24,
+        padding: 8,
         borderRadius: 8,
         borderColor: Colors.placeHolder,
         borderWidth: 1
     }
 });
 
-export { Card };
+export default Card;
