@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
-import {
-    SafeAreaView,
-    StyleSheet,
-    StatusBar,
-    Text,
-    View,
-    TouchableHighlight,
-    Dimensions
-} from 'react-native';
+import { SafeAreaView, StyleSheet, StatusBar, Dimensions } from 'react-native';
 import { NavigationStackProp } from 'react-navigation-stack';
 import { Colors } from '../../styles';
 import CTextInput from '../../components/common/CTextInput';
@@ -19,11 +11,15 @@ type Props = {
     navigation: NavigationStackProp;
 };
 
-class SignIn extends Component {
+type State = {
+    clientId: String;
+};
+
+class SignIn extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            clientId: null
+            clientId: ''
         };
     }
 
@@ -56,8 +52,21 @@ class SignIn extends Component {
         this.setState({ clientId });
     };
 
+    objToQueryString = (obj: any) => {
+        const keyValuePairs = [];
+        for (const key in obj) {
+            keyValuePairs.push(encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]));
+        }
+        return keyValuePairs.join('&');
+    };
+
     signIn = () => {
-        console.log('clientId', this.state);
+        let params = this.objToQueryString({
+            client_id: this.state.clientId
+        });
+        this.props.navigation.navigate('WebView', {
+            url: `https://github.com/login/oauth/authorize?${params}`
+        });
     };
 }
 

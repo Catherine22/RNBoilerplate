@@ -9,7 +9,7 @@ interface Props {
 }
 
 // API reference: https://github.com/react-native-community/react-native-webview/blob/master/docs/Reference.md
-class CWebView extends Component<Props> {
+class AuthWebView extends Component<Props> {
     constructor(props: Props) {
         super(props);
         console.log('webview', this.props.navigation.getParam('url'));
@@ -18,10 +18,22 @@ class CWebView extends Component<Props> {
     render() {
         return (
             <SafeAreaView style={styles.container}>
-                <WebView source={{ uri: this.props.navigation.getParam('url') }} incognito={true} />
+                <WebView
+                    source={{ uri: this.props.navigation.getParam('url') }}
+                    incognito={true}
+                    onLoad={this.onLoad}
+                />
             </SafeAreaView>
         );
     }
+
+    onLoad = (syntheticEvent: any) => {
+        const { nativeEvent } = syntheticEvent;
+
+        if (nativeEvent.url.includes('?code=')) {
+            console.log('success');
+        }
+    };
 }
 const styles = StyleSheet.create({
     container: {
@@ -29,4 +41,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     }
 });
-export default CWebView;
+export default AuthWebView;
