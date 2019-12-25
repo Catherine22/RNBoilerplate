@@ -52,6 +52,5 @@ const tabNavigatorConfig = {
     }
 };
 
-const MainNavigator = createBottomTabNavigator(routeConfigs, tabNavigatorConfig);
-const App = createAppContainer(MainNavigator);
-export default App;
+const AppNavigator = createBottomTabNavigator(routeConfigs, tabNavigatorConfig);
+export default AppNavigator;

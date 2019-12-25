@@ -1,5 +1,5 @@
 const Colors = {
-    primary: '#620011',
+    primary: '#6200ee',
     primaryVariant: '#3700b3',
     secondary: '#03dac6',
     secondaryVariant: '#018786',
@@ -10,4 +10,8 @@ const Colors = {
     placeHolder: '#c3c3c3'
 };
 
-export { Colors };
+const Font = {
+    buttonSize: 16
+};
+
+export { Colors, Font };

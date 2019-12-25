@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
-import { SafeAreaView, StyleSheet, StatusBar, Text, Button, Dimensions } from 'react-native';
+import {
+    SafeAreaView,
+    StyleSheet,
+    StatusBar,
+    Text,
+    View,
+    TouchableHighlight,
+    Dimensions
+} from 'react-native';
 import { NavigationStackProp } from 'react-navigation-stack';
 import { Colors } from '../../styles';
 import CTextInput from '../../components/common/CTextInput';
 import Card from '../../components/common/Card';
+import CButton from '../../components/common/CButton';
+import CLink from '../../components/common/CLink';
 
 type Props = {
     navigation: NavigationStackProp;
@@ -23,13 +33,19 @@ class SignIn extends Component {
                 <StatusBar barStyle="dark-content" />
                 <SafeAreaView style={styles.container}>
                     <Card style={styles.cardView}>
-                        <Text>My Auth app</Text>
                         <CTextInput
                             placeHolder="Client ID"
                             onChangeText={this.updateClientId}
                             style={styles.inputText}
                         />
-                        <Button title="Sign in" onPress={this.signIn}></Button>
+                        <CButton
+                            title="Sign in"
+                            onPress={this.signIn}
+                            buttonStyle={styles.buttonStyle}
+                        />
+                        <CLink
+                            title="What is my client ID?"
+                            link="https://developer.github.com/apps/building-oauth-apps/"></CLink>
                     </Card>
                 </SafeAreaView>
             </>
@@ -45,6 +61,7 @@ class SignIn extends Component {
     };
 }
 
+const WIDGET_WIDTH = Dimensions.get('window').width / 2;
 const styles = StyleSheet.create({
     container: {
         height: Dimensions.get('window').height,
@@ -56,7 +73,11 @@ const styles = StyleSheet.create({
         height: 200
     },
     inputText: {
-        width: Dimensions.get('window').width / 2
+        width: WIDGET_WIDTH
+    },
+    buttonStyle: {
+        margin: 16,
+        width: WIDGET_WIDTH
     }
 });
 
