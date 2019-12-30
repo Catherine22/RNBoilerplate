@@ -1,9 +1,5 @@
-/**
- * @format
- */
-
 import { AppRegistry } from 'react-native';
-import App from './src/App';
+import AuthNavigator from './src/views/auth/AuthNavigator';
 import { name as appName } from './app.json';
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent(appName, () => AuthNavigator);
