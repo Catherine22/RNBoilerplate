@@ -107,25 +107,26 @@ jobs:
 #             #       requires:
 #             #           - rn/ios_build_and_test
 ## Option2 - user-defined
+version: 2.1
 workflows:
-    version: 2
-    jobs:
-        - checkout_code
-        - analyse_js:
-              requires:
-                  - checkout_code
-        - require_beforehand:
-              requires:
-                  - android_build_settings
-        - build_debug_apk:
-              build_type: debug
-              name: build_android_debug
-              project_path: android
-              requires:
-                  - build_android_debug
-        - build_release_apk:
-              build_type: release
-              name: build_android_release
-              project_path: android
-              requires:
-                  - build_android_release
+    test:
+        jobs:
+            - checkout_code
+            - analyse_js:
+                  requires:
+                      - checkout_code
+            - require_beforehand:
+                  requires:
+                      - android_build_settings
+            - build_debug_apk:
+                  build_type: debug
+                  name: build_android_debug
+                  project_path: android
+                  requires:
+                      - build_android_debug
+            - build_release_apk:
+                  build_type: release
+                  name: build_android_release
+                  project_path: android
+                  requires:
+                      - build_android_release
