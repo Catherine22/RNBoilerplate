@@ -50,18 +50,18 @@ workflows:
             - analyse_js:
                   requires:
                       - checkout_code
-            - rn/android_build:
-                  build_type: debug
-                  name: build_android_debug
-                  project_path: android
-                  requires:
-                      - analyse_js
             # - rn/android_build:
-            #       build_type: release
-            #       name: build_android_release
+            #       build_type: debug
+            #       name: build_android_debug
             #       project_path: android
             #       requires:
             #           - analyse_js
+            - rn/android_build:
+                  build_type: release
+                  name: build_android_release
+                  project_path: android
+                  requires:
+                      - analyse_js
             - rn/android_test:
                   detox_configuration: android.emu.release
                   requires:
