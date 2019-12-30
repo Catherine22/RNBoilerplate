@@ -40,7 +40,7 @@ jobs:
             - run:
                   command: echo 1
                   name: Run Fastlane
-    android_build_settings:
+    require_beforehand:
         executor: rn/linux_js
         steps:
             - attach_workspace:
@@ -117,14 +117,14 @@ workflows:
                       - checkout_code
             - require_beforehand:
                   requires:
-                      - android_build_settings
-            - build_debug_apk:
+                      - require_beforehand
+            - build_android_debug:
                   build_type: debug
                   name: build_android_debug
                   project_path: android
                   requires:
                       - build_android_debug
-            - build_release_apk:
+            - build_android_release:
                   build_type: release
                   name: build_android_release
                   project_path: android
