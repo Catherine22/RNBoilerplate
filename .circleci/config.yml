@@ -62,10 +62,11 @@ workflows:
                   project_path: android
                   requires:
                       - analyse_js
-            - rn/android_test:
-                  detox_configuration: android.emu.release
-                  requires:
-                      - build_android_release
+            ## skip android test because this is running on macOS
+            # - rn/android_test:
+            #       detox_configuration: android.emu.release
+            #       requires:
+            #           - build_android_release
             ## skip ios build because circle ci free plan builds on Linux
             # - rn/ios_build_and_test:
             #       build_configuration: Release
@@ -75,9 +76,9 @@ workflows:
             #       requires:
             #           - analyse_js
             #       scheme: Example
-            - fastlane_android_release:
-                  requires:
-                      - rn/android_test
+            # - fastlane_android_release:
+            #       requires:
+            #           - rn/android_test
             # - fastlane_ios_release:
             #       requires:
             #           - rn/ios_build_and_test
