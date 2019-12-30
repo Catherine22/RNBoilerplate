@@ -56,12 +56,12 @@ workflows:
                   project_path: android
                   requires:
                       - analyse_js
-            - rn/android_build:
-                  build_type: release
-                  name: build_android_release
-                  project_path: android
-                  requires:
-                      - analyse_js
+            # - rn/android_build:
+            #       build_type: release
+            #       name: build_android_release
+            #       project_path: android
+            #       requires:
+            #           - analyse_js
             - rn/android_test:
                   detox_configuration: android.emu.release
                   requires:
