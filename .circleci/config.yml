@@ -12,6 +12,7 @@ jobs:
                   command: yarn flow
                   name: Flow
             - run:
+                  ## skip jest at the very beginning
                   command: yarn jest --passWithNoTests
                   name: Jest
     checkout_code:
