@@ -8,6 +8,7 @@
         "start": "react-native start",
         "test": "jest",
         "lint": "eslint .",
+        "flow": "flow",
         "reset": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules",
         "postinstall": "npx jetify"
     },
@@ -18,6 +19,7 @@
         "@types/react-native": "^0.60.25",
         "@types/react-test-renderer": "^16.9.1",
         "babel-eslint": "^10.0.3",
+        "flow-bin": "^0.114.0",
         "react": "16.9.0",
         "react-native": "0.61.5",
         "react-native-gesture-handler": "^1.5.2",
