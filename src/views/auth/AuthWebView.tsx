@@ -29,9 +29,9 @@ class AuthWebView extends Component<Props> {
 
     onLoad = (syntheticEvent: any) => {
         const { nativeEvent } = syntheticEvent;
-
         if (nativeEvent.url.includes('?code=')) {
-            console.log('success');
+            let code = nativeEvent.url.split('?code=')[1];
+            console.log('code', code);
         }
     };
 }

@@ -1,11 +1,9 @@
-import React from 'react';
 import SignIn from './SignIn';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import AppNavigator from '../../AppNavigator';
 import AuthLoadingScreen from '../auth/AuthLoadingScreen';
-import { createStackNavigator, HeaderTitle } from 'react-navigation-stack';
+import { createStackNavigator } from 'react-navigation-stack';
 import AuthWebView from './AuthWebView';
-import { Text, Button } from 'react-native';
 
 // Auth stack
 const routeConfigs = {
@@ -16,7 +14,7 @@ const routeConfigs = {
         })
     },
 
-    WebView: {
+    AuthWebView: {
         screen: AuthWebView,
         navigationOptions: () => ({
             headerBackTitle: 'back'

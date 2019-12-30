@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { SafeAreaView, StyleSheet, StatusBar, Dimensions } from 'react-native';
 import { NavigationStackProp } from 'react-navigation-stack';
-import { Colors } from '../../styles';
 import CTextInput from '../../components/common/CTextInput';
 import Card from '../../components/common/Card';
 import CButton from '../../components/common/CButton';
@@ -64,7 +63,7 @@ class SignIn extends Component<Props, State> {
         let params = this.objToQueryString({
             client_id: this.state.clientId
         });
-        this.props.navigation.navigate('WebView', {
+        this.props.navigation.navigate('AuthWebView', {
             url: `https://github.com/login/oauth/authorize?${params}`
         });
     };
