@@ -1,0 +1,83 @@
+jobs:
+    analyse_js:
+        executor: rn/linux_js
+        steps:
+            - attach_workspace:
+                  at: .
+            - rn/yarn_install
+            - run:
+                  command: yarn eslint
+                  name: Run ESLint
+            - run:
+                  command: yarn flow
+                  name: Flow
+            - run:
+                  ## skip jest at the very beginning
+                  command: yarn jest --passWithNoTests
+                  name: Jest
+    checkout_code:
+        executor: rn/linux_js
+        steps:
+            - checkout
+            - persist_to_workspace:
+                  paths: .
+                  root: .
+    fastlane_android_release:
+        executor: rn/linux_js
+        steps:
+            - attach_workspace:
+                  at: .
+            - rn/yarn_install
+            - run:
+                  command: echo
+                  name: Run Fastlane
+    fastlane_ios_release:
+        executor: rn/linux_js
+        steps:
+            - attach_workspace:
+                  at: .
+            - rn/yarn_install
+            - run:
+                  command: echo 1
+                  name: Run Fastlane
+orbs:
+    rn: react-native-community/react-native@1.0.0
+version: 2.1
+workflows:
+    test:
+        jobs:
+            - checkout_code
+            - analyse_js:
+                  requires:
+                      - checkout_code
+            - rn/android_build:
+                  build_type: debug
+                  name: build_android_debug
+                  project_path: android
+                  requires:
+                      - analyse_js
+            - rn/android_build:
+                  build_type: release
+                  name: build_android_release
+                  project_path: android
+                  requires:
+                      - analyse_js
+            - rn/android_test:
+                  detox_configuration: android.emu.release
+                  requires:
+                      - build_android_release
+            ## skip ios build because circle ci free plan builds on Linux
+            # - rn/ios_build_and_test:
+            #       build_configuration: Release
+            #       detox_configuration: ios.sim.release
+            #       device: iPhone X
+            #       project_path: ios/Example.xcodeproj
+            #       requires:
+            #           - analyse_js
+            #       scheme: Example
+            - fastlane_android_release:
+                  requires:
+                      - rn/android_test
+            # - fastlane_ios_release:
+            #       requires:
+            #           - rn/ios_build_and_test
