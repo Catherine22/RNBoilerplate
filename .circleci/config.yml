@@ -12,7 +12,7 @@ jobs:
                   command: yarn flow
                   name: Flow
             - run:
-                  command: yarn jest
+                  command: yarn jest --passWithNoTests
                   name: Jest
     checkout_code:
         executor: rn/linux_js
