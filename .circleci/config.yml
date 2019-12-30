@@ -40,30 +40,6 @@ jobs:
             - run:
                   command: echo 1
                   name: Run Fastlane
-    require_beforehand:
-        executor: rn/linux_js
-        steps:
-            - attach_workspace:
-                  at: .
-            - run:
-                  command: cd android && chmod +x gradlew
-                  name: chmod
-    build_android_debug:
-        executor: rn/linux_js
-        steps:
-            - attach_workspace:
-                  at: .
-            - run:
-                  command: ./gradlew assembleDebug
-                  name: Build debug apk
-    build_android_release:
-        executor: rn/linux_js
-        steps:
-            - attach_workspace:
-                  at: .
-            - run:
-                  command: ./gradlew assembleRelease
-                  name: Build release apk
 orbs:
     rn: react-native-community/react-native@1.0.0
 version: 2.1
@@ -85,7 +61,7 @@ workflows:
                   name: build_android_release
                   project_path: android
                   requires:
-                      - rn/android_build
+                      - analyse_js
             - rn/android_test:
                   detox_configuration: android.emu.release
                   requires:
