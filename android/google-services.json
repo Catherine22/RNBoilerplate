@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "451059371574",
+    "firebase_url": "https://rnboilerplate-26890.firebaseio.com",
+    "project_id": "rnboilerplate-26890",
+    "storage_bucket": "rnboilerplate-26890.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451059371574:android:00b7690e3f650e1bdf5297",
+        "android_client_info": {
+          "package_name": "com.cbb.rnboilerplate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "451059371574-qp7jp2tllcb0lo8lchnmnvra9ol1kmab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeXmvYDvZV7T9Un7w1jgq4tVRDCPJDxnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "451059371574-qp7jp2tllcb0lo8lchnmnvra9ol1kmab.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "451059371574-hjavd077hhpervkdu2tacrjnd3ql3jnr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cbb.rnboilerplate"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
