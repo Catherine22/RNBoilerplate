@@ -1,4 +1,6 @@
-const Colors = {
+import { StyleSheet } from 'react-native';
+
+const colors = {
     primary: '#6200ee',
     primaryVariant: '#3700b3',
     secondary: '#03dac6',
@@ -10,8 +12,6 @@ const Colors = {
     placeHolder: '#c3c3c3'
 };
 
-const Font = {
-    buttonSize: 16
-};
+const common = StyleSheet.create({});
 
-export { Colors, Font };
+export { colors, common };

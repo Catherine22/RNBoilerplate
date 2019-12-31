@@ -3,7 +3,6 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import AppNavigator from '../AppNavigator';
 import AuthLoadingScreen from './AuthLoadingScreen';
 import { createStackNavigator } from 'react-navigation-stack';
-import AuthWebView from './AuthWebView';
 
 // Auth stack
 const routeConfigs = {
@@ -11,13 +10,6 @@ const routeConfigs = {
         screen: SignIn,
         navigationOptions: () => ({
             header: null
-        })
-    },
-
-    AuthWebView: {
-        screen: AuthWebView,
-        navigationOptions: () => ({
-            headerBackTitle: 'back'
         })
     }
 };
