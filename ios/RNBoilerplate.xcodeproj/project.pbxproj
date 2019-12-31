@@ -19,6 +19,7 @@
 		3A3D187701DF14C8B1AB30BF /* libPods-RNBoilerplate-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC39410E3AF0DA975090A041 /* libPods-RNBoilerplate-tvOSTests.a */; };
 		4B9B340F2E81217ACB1734ED /* libPods-RNBoilerplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3840A80692F2A1D9292783 /* libPods-RNBoilerplate.a */; };
 		A7EEFF72DC39B58C2D659EED /* libPods-RNBoilerplate-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9884AED0E498327F5A2ED202 /* libPods-RNBoilerplate-tvOS.a */; };
+		C18E3E5023BB0F0A00B0871B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C18E3E4F23BB0F0A00B0871B /* GoogleService-Info.plist */; };
 		F90D011650DD6F523C22299E /* libPods-RNBoilerplateTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71699C826E3FD4221B3C07AA /* libPods-RNBoilerplateTests.a */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		91FCD4FA57FCD31A4EAEBC5D /* Pods-RNBoilerplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNBoilerplate.release.xcconfig"; path = "Target Support Files/Pods-RNBoilerplate/Pods-RNBoilerplate.release.xcconfig"; sourceTree = "<group>"; };
 		9884AED0E498327F5A2ED202 /* libPods-RNBoilerplate-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNBoilerplate-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD45F295C44ECCD2EB7217C2 /* Pods-RNBoilerplate-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNBoilerplate-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-RNBoilerplate-tvOSTests/Pods-RNBoilerplate-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		C18E3E4F23BB0F0A00B0871B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CC39410E3AF0DA975090A041 /* libPods-RNBoilerplate-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNBoilerplate-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6A128DA95D889B56CC1E6B0 /* Pods-RNBoilerplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNBoilerplate.debug.xcconfig"; path = "Target Support Files/Pods-RNBoilerplate/Pods-RNBoilerplate.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -125,6 +127,7 @@
 		13B07FAE1A68108700A75B9A /* RNBoilerplate */ = {
 			isa = PBXGroup;
 			children = (
+				C18E3E4F23BB0F0A00B0871B /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -161,7 +164,6 @@
 				6122ACD6AD0F08E683F38AD7 /* Pods-RNBoilerplateTests.debug.xcconfig */,
 				1575B42866C571DEBF267FCC /* Pods-RNBoilerplateTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -308,6 +310,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -338,6 +341,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				C18E3E5023BB0F0A00B0871B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,7 +639,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cbb.rnboilerplate;
 				PRODUCT_NAME = RNBoilerplate;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -654,7 +658,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cbb.rnboilerplate;
 				PRODUCT_NAME = RNBoilerplate;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
