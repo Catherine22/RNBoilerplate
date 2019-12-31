@@ -17,6 +17,7 @@
         "@types/jest": "^24.0.24",
         "@types/react": "^16.9.17",
         "@types/react-native": "^0.60.25",
+        "@types/react-redux": "^7.1.5",
         "@types/react-test-renderer": "^16.9.1",
         "babel-eslint": "^10.0.3",
         "flow-bin": "^0.114.0",
@@ -48,7 +49,8 @@
         "metro-react-native-babel-preset": "^0.57.0",
         "prettier": "^1.19.1",
         "react-test-renderer": "16.9.0",
-        "redux-logger": "^3.0.6"
+        "redux-logger": "^3.0.6",
+        "typesafe-actions": "^5.1.0"
     },
     "jest": {
         "preset": "react-native"

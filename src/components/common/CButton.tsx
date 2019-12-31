@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { StyleSheet, TouchableHighlight, Text, ViewStyle, StyleProp } from 'react-native';
-import { Colors, Font } from '../../styles';
+import { Colors, Font } from '../../constants/Styles';
 
 interface Props {
     buttonStyle?: StyleProp<ViewStyle>;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, ScrollView, Text, StatusBar } from 'react-native';
 import { NavigationStackProp } from 'react-navigation-stack';
-import { Colors } from '../../styles';
+import { Colors } from '../../constants/Styles';
 
 type Props = {
     navigation: NavigationStackProp<{ title: string }>;

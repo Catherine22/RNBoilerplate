@@ -1,10 +1,10 @@
 import React from 'react';
-import DashboardNavigator from './views/dashboard/DashboardNavigator';
-import RepoNavigator from './views/repo/RepoNavigator';
-import ProfileNavigator from './views/profile/ProfileNavigator';
-import SettingsNavigator from './views/settings/SettingsNavigator';
+import DashboardNavigator from './dashboard/DashboardNavigator';
+import RepoNavigator from './repo/RepoNavigator';
+import ProfileNavigator from './profile/ProfileNavigator';
+import SettingsNavigator from './settings/SettingsNavigator';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { Colors } from './styles';
+import { Colors } from '../constants/Styles';
 
 const routeConfigs = {
     Dashboard: {

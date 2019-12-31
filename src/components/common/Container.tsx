@@ -7,7 +7,7 @@ import {
     SafeAreaView,
     ScrollView
 } from 'react-native';
-import { Colors } from '../../styles';
+import { Colors } from '../../constants/Styles';
 
 interface Props {
     style?: StyleProp<ViewStyle>;

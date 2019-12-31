@@ -1,7 +1,7 @@
 import SignIn from './SignIn';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import AppNavigator from '../../AppNavigator';
-import AuthLoadingScreen from '../auth/AuthLoadingScreen';
+import AppNavigator from '../AppNavigator';
+import AuthLoadingScreen from './AuthLoadingScreen';
 import { createStackNavigator } from 'react-navigation-stack';
 import AuthWebView from './AuthWebView';
 
@@ -42,5 +42,4 @@ const SwitchNavigator = createSwitchNavigator(
     switchNavigatorConfig
 );
 
-const Auth = createAppContainer(SwitchNavigator);
-export default Auth;
+export default createAppContainer(SwitchNavigator);

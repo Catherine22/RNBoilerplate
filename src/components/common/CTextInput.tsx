@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, TextInput, ViewStyle, StyleProp } from 'react-native';
-import { Colors } from '../../styles';
+import { Colors } from '../../constants/Styles';
 
 interface Props {
     placeHolder?: string;
