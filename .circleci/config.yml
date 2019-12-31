@@ -24,14 +24,18 @@ jobs:
                   root: .
             - run:
                   command: |
-                      sed "s/API_KEY/$firebase_apiKey/g" src/constants/Secrets.ts > src/constants/Secrets.tmp && mv src/constants/Secrets.tmp src/constants/Secrets.ts
-                      sed "s/AUTH_DOMAIN/$firebase_appId/g" src/constants/Secrets.ts > src/constants/Secrets.tmp && mv src/constants/Secrets.tmp src/constants/Secrets.ts
-                      sed "s/DATABASE_URL/$firebase_authDomain/g" src/constants/Secrets.ts > src/constants/Secrets.tmp && mv src/constants/Secrets.tmp src/constants/Secrets.ts
-                      sed "s/PROJECT_ID/$firebase_databaseURL/g" src/constants/Secrets.ts > src/constants/Secrets.tmp && mv src/constants/Secrets.tmp src/constants/Secrets.ts
-                      sed "s/STORAGE_BUCKET/$firebase_measurementId/g" src/constants/Secrets.ts > src/constants/Secrets.tmp && mv src/constants/Secrets.tmp src/constants/Secrets.ts
-                      sed "s/MESSAGING_SENDER_ID/$firebase_messagingSenderId/g" src/constants/Secrets.ts > src/constants/Secrets.tmp && mv src/constants/Secrets.tmp src/constants/Secrets.ts
-                      sed "s/APP_ID/$firebase_projectId/g" src/constants/Secrets.ts > src/constants/Secrets.tmp && mv src/constants/Secrets.tmp src/constants/Secrets.ts
-                      sed "s/MEASUREMENT_ID/$firebase_storageBucket/g" src/constants/Secrets.ts > src/constants/Secrets.tmp && mv src/constants/Secrets.tmp src/constants/Secrets.ts
+                      > src/constants/Secrets.ts
+                      echo let firebaseConfig = { >> src/constants/Secrets.ts
+                      echo apiKey: "'$firebase_apiKey'", >> src/constants/Secrets.ts
+                      echo authDomain: "'$firebase_authDomain'", >> src/constants/Secrets.ts
+                      echo databaseURL: "'$firebase_databaseURL'", >> src/constants/Secrets.ts
+                      echo projectId: "'$firebase_projectId'", >> src/constants/Secrets.ts
+                      echo storageBucket: "'$firebase_storageBucket'", >> src/constants/Secrets.ts
+                      echo messagingSenderId: "'$firebase_messagingSenderId'", >> src/constants/Secrets.ts
+                      echo appId: "'$firebase_appId'", >> src/constants/Secrets.ts
+                      echo '};' >> src/constants/Secrets.ts
+                      echo export '{ firebaseConfig };' >> src/constants/Secrets.ts
+                      cat src/constants/Secrets.ts
                   name: Update secrets
     fastlane_android_release:
         executor: rn/linux_js
