@@ -1,28 +1,32 @@
-import * as auth from '../actions/auth';
+import {
+    EMAIL_CHANGED,
+    PASSWORD_CHANGED,
+    LOGIN_USER_SUCCESS,
+    LOGIN_USER_FAIL,
+    LOGIN_USER
+} from '../actions/actionTypes';
 
 const initialState = {
     email: '',
-    refreshToken: '',
-    isLoggedIn: false,
-    isNewUser: false
+    password: '',
+    error: '',
+    user: null
 };
 
 function bypass(state = initialState, action: any) {
     switch (action.type) {
-        case auth.SIGN_IN:
-            return Object.assign({}, state, {
-                email: action.payload.email,
-                refreshToken: action.payload.refreshToken,
-                isLoggedIn: true,
-                isNewUser: false
-            });
-        case auth.SIGN_UP:
-            return Object.assign({}, state, {
-                email: action.payload.email,
-                refreshToken: action.payload.refreshToken,
-                isLoggedIn: true,
-                isNewUser: true
-            });
+        case EMAIL_CHANGED:
+            return { ...state, email: action.payload };
+        case PASSWORD_CHANGED:
+            return { ...state, password: action.payload };
+        case LOGIN_USER:
+            return { ...state, error: '' };
+        case LOGIN_USER_SUCCESS:
+            // we reset everything here
+            return { ...state, ...initialState, user: action.payload };
+        case LOGIN_USER_FAIL:
+            // reset password
+            return { ...state, error: action.payload, password: '' };
         default:
             return state;
     }

@@ -1,30 +1,76 @@
-/*
- * action types
- */
-const SIGN_IN = 'SIGN_IN';
-const SIGN_UP = 'SIGN_UP';
+import {
+    EMAIL_CHANGED,
+    PASSWORD_CHANGED,
+    LOGIN_USER_SUCCESS,
+    LOGIN_USER_FAIL,
+    LOGIN_USER
+} from './actionTypes';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
 
 /*
  * action creators
  */
-function signIn(email: string, password: string) {
+function emailChanged(email: string) {
     return {
-        type: SIGN_IN,
-        payload: {
-            email,
-            password
-        }
+        type: EMAIL_CHANGED,
+        payload: email
     };
 }
 
-function signUp(email: string, password: string) {
+function passwordChanged(password: string) {
     return {
-        type: SIGN_IN,
-        payload: {
-            email,
-            password
-        }
+        type: PASSWORD_CHANGED,
+        payload: password
     };
 }
 
-export { SIGN_IN, SIGN_UP, signIn, signUp };
+const loginUserSuccess = (dispatch: any, user: any) => {
+    dispatch({ type: LOGIN_USER_SUCCESS, payload: user });
+};
+
+const loginUserFail = (dispatch: any, error: any) => {
+    dispatch({ type: LOGIN_USER_FAIL, payload: error });
+};
+
+const signUp = (user: { email: string; password: string }) => {
+    return (dispatch: any) => {
+        dispatch({ type: LOGIN_USER });
+        firebase
+            .auth()
+            .createUserWithEmailAndPassword(user.email, user.password)
+            .then(user => {
+                console.log('success', user);
+                loginUserSuccess(dispatch, user);
+            })
+            .catch(error => {
+                // Handle Errors here.
+                let errorCode = error.code;
+                let errorMessage = error.message;
+                console.warn('sign up error', errorCode, errorMessage);
+                loginUserFail(dispatch, error);
+            });
+    };
+};
+
+const signIn = (user: { email: string; password: string }) => {
+    return (dispatch: any) => {
+        dispatch({ type: LOGIN_USER });
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(user.email, user.password)
+            .then(user => {
+                console.log('success', user);
+                loginUserSuccess(dispatch, user);
+            })
+            .catch(error => {
+                // Handle Errors here.
+                let errorCode = error.code;
+                let errorMessage = error.message;
+                console.warn('sign in error', errorCode, errorMessage);
+                loginUserFail(dispatch, error);
+            });
+    };
+};
+
+export { emailChanged, passwordChanged, signIn, signUp };
