@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, ScrollView, Text, StatusBar } from 'react-native';
 import { NavigationStackProp } from 'react-navigation-stack';
-import { Colors } from '../../styles';
+import { colors } from '../../constants/Styles';
 
 type Props = {
     navigation: NavigationStackProp<{ title: string }>;
@@ -26,7 +26,7 @@ class Profile extends React.Component<Props> {
 
 const styles = StyleSheet.create({
     scrollView: {
-        backgroundColor: Colors.background
+        backgroundColor: colors.background
     }
 });
 

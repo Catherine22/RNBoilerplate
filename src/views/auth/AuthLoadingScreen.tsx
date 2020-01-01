@@ -2,6 +2,8 @@ import React from 'react';
 import { ActivityIndicator, StatusBar, View } from 'react-native';
 import { NavigationStackProp } from 'react-navigation-stack';
 import AsyncStorage from '@react-native-community/async-storage';
+import { firebaseConfig } from '../../constants/Secrets';
+import * as firebase from 'firebase/app';
 
 type Props = {
     navigation: NavigationStackProp<{ title: string }>;
@@ -9,10 +11,15 @@ type Props = {
 
 class AuthLoadingScreen extends React.Component<Props> {
     componentDidMount() {
-        this._bootstrapAsync();
+        this.initFirebase();
+        this.bootstrapAsync();
     }
 
-    _bootstrapAsync = async () => {
+    initFirebase = () => {
+        firebase.initializeApp(firebaseConfig);
+    };
+
+    bootstrapAsync = async () => {
         const userToken = await AsyncStorage.getItem('@token');
         this.props.navigation.navigate(userToken ? 'App' : 'Auth');
     };

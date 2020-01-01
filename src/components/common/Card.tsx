@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { StyleSheet, View, ViewStyle, StyleProp } from 'react-native';
-import { Colors } from '../../styles';
+import { colors } from '../../constants/Styles';
 
 interface Props {
     style?: StyleProp<ViewStyle>;
@@ -19,7 +19,7 @@ const styles = StyleSheet.create<Styles>({
         marginHorizontal: 24,
         padding: 8,
         borderRadius: 8,
-        borderColor: Colors.placeHolder,
+        borderColor: colors.placeHolder,
         borderWidth: 1
     }
 });

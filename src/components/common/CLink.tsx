@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 import { StyleSheet, TouchableHighlight, Text, ViewStyle, Linking } from 'react-native';
-import { Colors, Font } from '../../styles';
+import { colors } from '../../constants/Styles';
 
 interface Props {
     title: string;
     link: string;
+    style?: ViewStyle;
 }
 
 interface Styles {
@@ -15,7 +16,7 @@ interface Styles {
 const CLink: FC<Props> = props => {
     return (
         <TouchableHighlight
-            style={styles.container}
+            style={[styles.container, props.style]}
             onPress={() => openURL(props.link)}
             underlayColor={'#ffffff'}>
             <Text style={styles.text}>{props.title}</Text>
@@ -41,13 +42,13 @@ const openURL = (url: string) => {
 
 const styles = StyleSheet.create<Styles>({
     container: {
-        borderBottomColor: Colors.primary,
+        borderBottomColor: colors.primary,
         borderBottomWidth: 1
     },
     text: {
-        color: Colors.primary,
+        color: colors.primary,
         textAlign: 'center',
-        fontSize: Font.buttonSize
+        fontSize: 16
     }
 });
 

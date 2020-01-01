@@ -1,10 +1,10 @@
 import React from 'react';
-import DashboardNavigator from './views/dashboard/DashboardNavigator';
-import RepoNavigator from './views/repo/RepoNavigator';
-import ProfileNavigator from './views/profile/ProfileNavigator';
-import SettingsNavigator from './views/settings/SettingsNavigator';
+import DashboardNavigator from './dashboard/DashboardNavigator';
+import RepoNavigator from './repo/RepoNavigator';
+import ProfileNavigator from './profile/ProfileNavigator';
+import SettingsNavigator from './settings/SettingsNavigator';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { Colors } from './styles';
+import { colors } from '../constants/Styles';
 
 const routeConfigs = {
     Dashboard: {
@@ -41,12 +41,12 @@ const tabNavigatorConfig = {
         headerMode: 'float' // [float, screen, none]
     },
     tabBarOptions: {
-        activeTintColor: Colors.primary,
+        activeTintColor: colors.primary,
         labelStyle: {
             fontSize: 12
         },
         style: {
-            backgroundColor: Colors.surface
+            backgroundColor: colors.surface
         }
     }
 };

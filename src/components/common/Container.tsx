@@ -7,7 +7,7 @@ import {
     SafeAreaView,
     ScrollView
 } from 'react-native';
-import { Colors } from '../../styles';
+import { colors } from '../../constants/Styles';
 
 interface Props {
     style?: StyleProp<ViewStyle>;
@@ -32,7 +32,7 @@ const Container: FC<Props> = props => {
 
 const styles = StyleSheet.create<Styles>({
     scrollView: {
-        backgroundColor: Colors.background
+        backgroundColor: colors.background
     }
 });
 

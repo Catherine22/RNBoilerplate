@@ -22,6 +22,21 @@ jobs:
             - persist_to_workspace:
                   paths: .
                   root: .
+            - run:
+                  command: |
+                      > src/constants/Secrets.ts
+                      echo let firebaseConfig = { >> src/constants/Secrets.ts
+                      echo apiKey: "'$firebase_apiKey'", >> src/constants/Secrets.ts
+                      echo authDomain: "'$firebase_authDomain'", >> src/constants/Secrets.ts
+                      echo databaseURL: "'$firebase_databaseURL'", >> src/constants/Secrets.ts
+                      echo projectId: "'$firebase_projectId'", >> src/constants/Secrets.ts
+                      echo storageBucket: "'$firebase_storageBucket'", >> src/constants/Secrets.ts
+                      echo messagingSenderId: "'$firebase_messagingSenderId'", >> src/constants/Secrets.ts
+                      echo appId: "'$firebase_appId'", >> src/constants/Secrets.ts
+                      echo '};' >> src/constants/Secrets.ts
+                      echo export '{ firebaseConfig };' >> src/constants/Secrets.ts
+                      cat src/constants/Secrets.ts
+                  name: Update secrets
     fastlane_android_release:
         executor: rn/linux_js
         steps:
@@ -62,11 +77,11 @@ workflows:
                   project_path: android
                   requires:
                       - analyse_js
-            - rn/android_test:
-                  detox_configuration: android.emu.release
-                  requires:
-                      - build_android_release
-            ## skip ios build because circle ci free plan builds on Linux
+            ## skip ios build and android test because circle ci free plan builds on Linux
+            # - rn/android_test:
+            #       detox_configuration: android.emu.release
+            #       requires:
+            #           - build_android_release
             # - rn/ios_build_and_test:
             #       build_configuration: Release
             #       detox_configuration: ios.sim.release
@@ -75,9 +90,9 @@ workflows:
             #       requires:
             #           - analyse_js
             #       scheme: Example
-            - fastlane_android_release:
-                  requires:
-                      - rn/android_test
+            # - fastlane_android_release:
+            #       requires:
+            #           - rn/android_test
             # - fastlane_ios_release:
             #       requires:
             #           - rn/ios_build_and_test

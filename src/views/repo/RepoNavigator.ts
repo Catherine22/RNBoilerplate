@@ -1,4 +1,3 @@
-import React from 'react';
 import Repo from './Repo';
 import { createStackNavigator } from 'react-navigation-stack';
 
