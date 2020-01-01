@@ -83,11 +83,16 @@ class SignIn extends Component<Props, State> {
         return keyValuePairs.join('&');
     };
 
-    signIn = () => {
+    signUp = () => {
         const { email, password } = this.state;
         firebase
             .auth()
             .createUserWithEmailAndPassword(email, password)
+            .then(function(user) {
+                console.log('success', user);
+                // user.email
+                // user.refreshToken
+            })
             .catch(function(error) {
                 // Handle Errors here.
                 let errorCode = error.code;
@@ -96,11 +101,16 @@ class SignIn extends Component<Props, State> {
             });
     };
 
-    signUp = () => {
+    signIn = () => {
         const { email, password } = this.state;
         firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
+            .then(function(user) {
+                console.log('success', user);
+                // user.email
+                // user.refreshToken
+            })
             .catch(function(error) {
                 // Handle Errors here.
                 let errorCode = error.code;
