@@ -8,6 +8,7 @@ import {
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import NavigationService from '../services/NavigationService';
+import AsyncStorage from '@react-native-community/async-storage';
 
 /*
  * action creators
@@ -26,9 +27,16 @@ function passwordChanged(password: string) {
     };
 }
 
-const loginUserSuccess = (dispatch: any, user: any) => {
+const loginUserSuccess = async (dispatch: any, user: any) => {
     dispatch({ type: LOGIN_USER_SUCCESS, payload: user });
-    NavigationService.navigate('App', { user });
+    const refreshToken = ['@refreshToken', user.refreshToken];
+    const email = ['@email', user.email];
+    try {
+        await AsyncStorage.multiSet([refreshToken, email]);
+        NavigationService.navigate('App', { user });
+    } catch (e) {
+        console.error(e);
+    }
 };
 
 const loginUserFail = (dispatch: any, error: any) => {
