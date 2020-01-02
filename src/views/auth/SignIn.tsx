@@ -5,25 +5,31 @@ import CTextInput, { Types } from '../../components/common/CTextInput';
 import Card from '../../components/common/Card';
 import CButton from '../../components/common/CButton';
 import CLink from '../../components/common/CLink';
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { emailChanged, passwordChanged, signUp, signIn } from '../../actions/Auth';
 
-type Props = {
+interface OwnProps {
     navigation: NavigationStackProp;
-};
+}
 
-type State = {
+interface StateProps {
     email: string;
     password: string;
-};
+}
 
-class SignIn extends Component<Props, State> {
+interface DispatchProps {
+    emailChanged: (email: string) => void;
+    passwordChanged: (password: string) => void;
+    signIn: (user: { email: string; password: string }) => void;
+    signUp: (user: { email: string; password: string }) => void;
+}
+
+type Props = StateProps & DispatchProps & OwnProps;
+
+class SignIn extends Component<Props> {
     constructor(props: Props) {
         super(props);
-        this.state = {
-            email: '',
-            password: ''
-        };
     }
 
     render() {
@@ -68,45 +74,21 @@ class SignIn extends Component<Props, State> {
     }
 
     updateEmail = (email: string) => {
-        this.setState({ email });
+        this.props.emailChanged(email);
     };
 
     updatePassword = (password: string) => {
-        this.setState({ password });
-    };
-
-    objToQueryString = (obj: any) => {
-        const keyValuePairs = [];
-        for (const key in obj) {
-            keyValuePairs.push(encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]));
-        }
-        return keyValuePairs.join('&');
+        this.props.passwordChanged(password);
     };
 
     signIn = () => {
-        const { email, password } = this.state;
-        firebase
-            .auth()
-            .createUserWithEmailAndPassword(email, password)
-            .catch(function(error) {
-                // Handle Errors here.
-                let errorCode = error.code;
-                let errorMessage = error.message;
-                console.warn('sign in error', errorCode, errorMessage);
-            });
+        const { email, password } = this.props;
+        this.props.signIn({ email, password });
     };
 
     signUp = () => {
-        const { email, password } = this.state;
-        firebase
-            .auth()
-            .signInWithEmailAndPassword(email, password)
-            .catch(function(error) {
-                // Handle Errors here.
-                let errorCode = error.code;
-                let errorMessage = error.message;
-                console.warn('sign up error', errorCode, errorMessage);
-            });
+        const { email, password } = this.props;
+        this.props.signUp({ email, password });
     };
 }
 
@@ -146,4 +128,21 @@ const styles = StyleSheet.create({
     }
 });
 
-export default SignIn;
+const mapStateToProps = (state: any) => {
+    const { email, password } = state.bypass;
+    return { email, password };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+    return bindActionCreators(
+        {
+            emailChanged,
+            passwordChanged,
+            signIn,
+            signUp
+        },
+        dispatch
+    );
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

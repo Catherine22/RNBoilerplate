@@ -1,4 +1,3 @@
-import React from 'react';
 import DashboardNavigator from './dashboard/DashboardNavigator';
 import RepoNavigator from './repo/RepoNavigator';
 import ProfileNavigator from './profile/ProfileNavigator';

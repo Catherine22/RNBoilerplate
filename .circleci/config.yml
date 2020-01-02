@@ -25,7 +25,7 @@ jobs:
             - run:
                   command: |
                       > src/constants/Secrets.ts
-                      echo let firebaseConfig = { >> src/constants/Secrets.ts
+                      echo const firebaseConfig = { >> src/constants/Secrets.ts
                       echo apiKey: "'$firebase_apiKey'", >> src/constants/Secrets.ts
                       echo authDomain: "'$firebase_authDomain'", >> src/constants/Secrets.ts
                       echo databaseURL: "'$firebase_databaseURL'", >> src/constants/Secrets.ts
