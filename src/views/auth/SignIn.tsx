@@ -5,6 +5,7 @@ import CTextInput, { Types } from '../../components/common/CTextInput';
 import Card from '../../components/common/Card';
 import CButton from '../../components/common/CButton';
 import CLink from '../../components/common/CLink';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { emailChanged, passwordChanged, signUp, signIn } from '../../actions/auth';
 
@@ -135,8 +136,21 @@ const styles = StyleSheet.create({
     }
 });
 
-const mapStateToProps = (auth: any) => {
-    const { email, password } = auth;
+const mapStateToProps = (state: any) => {
+    const { email, password } = state.bypass;
     return { email, password };
 };
-export default connect(mapStateToProps, { emailChanged, passwordChanged, signIn, signUp })(SignIn);
+
+const mapDispatchToProps = (dispatch: any) => {
+    return bindActionCreators(
+        {
+            emailChanged,
+            passwordChanged,
+            signIn,
+            signUp
+        },
+        dispatch
+    );
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

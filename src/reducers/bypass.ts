@@ -13,7 +13,7 @@ const initialState = {
     user: null
 };
 
-function bypass(state = initialState, action: any) {
+function bypass(state = initialState, action: { type: string; payload: any }) {
     switch (action.type) {
         case EMAIL_CHANGED:
             return { ...state, email: action.payload };

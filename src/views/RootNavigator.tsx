@@ -7,9 +7,10 @@ import ReduxThunk from 'redux-thunk';
 
 type Props = {};
 
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
-const store = createStore(appReducers, {}, applyMiddleware(ReduxThunk));
+const store = createStore(appReducers, composeEnhancer(applyMiddleware(ReduxThunk)));
 
 const RootNavigator: FC<Props> = props => {
     return (
