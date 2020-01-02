@@ -192,6 +192,12 @@ open "rndebugger://set-debugger-loc?host=localhost&port=8081"
 
 `⌘` + `D` => click `debug`
 
+6. Install redux dependencies
+
+```bash
+yarn add @types/react-redux react-redux redux
+```
+
 #### Fundamentals
 
 -   Actions
@@ -349,7 +355,33 @@ const store = createStore(appReducers, composeEnhancer(applyMiddleware(ReduxThun
 
 #### Aasynchronous data flow
 
-Three popular redux middleware: redux-thunk, redux-promise and redux-saga to run asynchronous data flow in redux store
+Three popular redux middleware: redux-thunk, redux-promise and redux-saga to run asynchronous data flow in redux store.
+
+-   Redux-thunk
+
+1. Install redux-thunk
+
+```bash
+yarn add redux-thunk
+```
+
+2. Apply middleware
+
+```Typescript
+import ReduxThunk from 'redux-thunk';
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(appReducers, composeEnhancer(applyMiddleware(ReduxThunk)));
+```
+
+[redux-thunk]
+
+#### Explore more middlewares
+
+You can use [redix-promise] or [redux-promise-middleware] to dispatch Promises instead of functions.  
+You can use [redux-observable] to dispatch Observables.  
+You can use the [redux-saga] middleware to build more complex asynchronous actions.  
+You can use the [redux-pack] middleware to dispatch promise-based asynchronous actions.  
+You can even write a custom middleware to describe calls to your API, like the real world example does.
 
 [vscode-settings.json]: https://github.com/Catherine22/Front-end-warm-up/blob/master/vscode-settings.json
 [react-native-debugger]: https://github.com/jhen0409/react-native-debugger
@@ -361,4 +393,10 @@ Three popular redux middleware: redux-thunk, redux-promise and redux-saga to run
 [index.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/reducers/index.ts  
 [RootNavigator.tsx]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/views/RootNavigator.tsx  
 [SignIn.tsx]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/views/auth/SignIn.tsx  
-[Logger.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/middleware/Logger.ts
+[Logger.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/middleware/Logger.ts  
+[redux-thunk]: https://github.com/reduxjs/redux-thunk  
+[redix-promise]: https://github.com/redux-utilities/redux-promise  
+[redux-promise-middleware]: https://github.com/pburtchaell/redux-promise-middleware  
+[redux-observable]: https://redux-observable.js.org/  
+[redux-saga]:https://redux-saga.js.org/  
+[redux-pack]: https://github.com/lelandrichardson/redux-pack

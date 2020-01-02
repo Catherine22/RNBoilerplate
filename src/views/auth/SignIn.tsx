@@ -81,14 +81,6 @@ class SignIn extends Component<Props> {
         this.props.passwordChanged(password);
     };
 
-    objToQueryString = (obj: any) => {
-        const keyValuePairs = [];
-        for (const key in obj) {
-            keyValuePairs.push(encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]));
-        }
-        return keyValuePairs.join('&');
-    };
-
     signIn = () => {
         const { email, password } = this.props;
         this.props.signIn({ email, password });

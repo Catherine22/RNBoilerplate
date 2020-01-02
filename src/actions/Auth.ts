@@ -7,6 +7,7 @@ import {
 } from './ActionTypes';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+import NavigationService from '../services/NavigationService';
 
 /*
  * action creators
@@ -27,6 +28,7 @@ function passwordChanged(password: string) {
 
 const loginUserSuccess = (dispatch: any, user: any) => {
     dispatch({ type: LOGIN_USER_SUCCESS, payload: user });
+    NavigationService.navigate('App', { user });
 };
 
 const loginUserFail = (dispatch: any, error: any) => {
