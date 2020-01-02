@@ -1,17 +1,17 @@
-import Profile from './Profile';
+import Posts from './Posts';
 import { createStackNavigator } from 'react-navigation-stack';
 
 const routeConfigs = {
-    Profile: {
-        screen: Profile,
+    Posts: {
+        screen: Posts,
         navigationOptions: () => ({
-            title: 'Profile'
+            title: 'Posts'
         })
     }
 };
 
 const stackNavigatorConfig = {
-    initialRouteName: 'Profile',
+    initialRouteName: 'Posts',
     defaultNavigationOptions: {
         title: 'Unknown',
         mode: 'card', // [card, modal]
@@ -19,5 +19,5 @@ const stackNavigatorConfig = {
     }
 };
 
-const ProfileNavigator = createStackNavigator(routeConfigs, stackNavigatorConfig);
-export default ProfileNavigator;
+const PostsNavigator = createStackNavigator(routeConfigs, stackNavigatorConfig);
+export default PostsNavigator;

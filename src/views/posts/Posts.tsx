@@ -7,7 +7,7 @@ type Props = {
     navigation: NavigationStackProp<{ title: string }>;
 };
 
-class Profile extends React.Component<Props> {
+class Posts extends React.Component<Props> {
     render() {
         return (
             <>
@@ -16,7 +16,7 @@ class Profile extends React.Component<Props> {
                     <ScrollView
                         contentInsetAdjustmentBehavior="automatic"
                         style={styles.scrollView}>
-                        <Text>Profile</Text>
+                        <Text>Posts</Text>
                     </ScrollView>
                 </SafeAreaView>
             </>
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Profile;
+export default Posts;

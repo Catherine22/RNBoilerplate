@@ -7,7 +7,7 @@ type Props = {
     navigation: NavigationStackProp<{ title: string }>;
 };
 
-class Repo extends React.Component<Props> {
+class Albums extends React.Component<Props> {
     render() {
         return (
             <>
@@ -16,7 +16,7 @@ class Repo extends React.Component<Props> {
                     <ScrollView
                         contentInsetAdjustmentBehavior="automatic"
                         style={styles.scrollView}>
-                        <Text>Repo</Text>
+                        <Text>Albums</Text>
                     </ScrollView>
                 </SafeAreaView>
             </>
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Repo;
+export default Albums;
