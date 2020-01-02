@@ -385,18 +385,17 @@ You can even write a custom middleware to describe calls to your API, like the r
 
 [vscode-settings.json]: https://github.com/Catherine22/Front-end-warm-up/blob/master/vscode-settings.json
 [react-native-debugger]: https://github.com/jhen0409/react-native-debugger
-
-[Enable Dark Theme In Chrome DevTools] : https://developers.google.com/web/tools/chrome-devtools/customize/dark-theme  
-[ActionTypes.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/actions/ActionTypes.ts  
-[Auth.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/actions/Auth.ts  
-[Bypass.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/reducers/Bypass.ts  
-[index.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/reducers/index.ts  
-[RootNavigator.tsx]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/views/RootNavigator.tsx  
-[SignIn.tsx]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/views/auth/SignIn.tsx  
-[Logger.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/middleware/Logger.ts  
-[redux-thunk]: https://github.com/reduxjs/redux-thunk  
-[redix-promise]: https://github.com/redux-utilities/redux-promise  
-[redux-promise-middleware]: https://github.com/pburtchaell/redux-promise-middleware  
-[redux-observable]: https://redux-observable.js.org/  
-[redux-saga]:https://redux-saga.js.org/  
+[enable dark theme in chrome devtools]: https://developers.google.com/web/tools/chrome-devtools/customize/dark-theme
+[actiontypes.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/actions/ActionTypes.ts
+[auth.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/actions/Auth.ts
+[bypass.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/reducers/Bypass.ts
+[index.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/reducers/index.ts
+[rootnavigator.tsx]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/views/RootNavigator.tsx
+[signin.tsx]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/views/auth/SignIn.tsx
+[logger.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/middleware/Logger.ts
+[redux-thunk]: https://github.com/reduxjs/redux-thunk
+[redix-promise]: https://github.com/redux-utilities/redux-promise
+[redux-promise-middleware]: https://github.com/pburtchaell/redux-promise-middleware
+[redux-observable]: https://redux-observable.js.org/
+[redux-saga]: https://redux-saga.js.org/
 [redux-pack]: https://github.com/lelandrichardson/redux-pack
