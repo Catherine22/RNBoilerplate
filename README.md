@@ -174,6 +174,8 @@ const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(appReducers, composeEnhancer(applyMiddleware(ReduxThunk)));
 ```
 
+[Learn more](http://extension.remotedev.io/#12-advanced-store-setup)
+
 3. open debugger
 
 ```bash
@@ -199,7 +201,7 @@ open "rndebugger://set-debugger-loc?host=localhost&port=8081"
 Actions are payloads of information that send data from your application to your store. They are the only source of information for the store. You send them to the store using `store.dispatch()`.  
 You will have one actionTypes file and many action files in the actions directory:
 
-[actionTypes.ts]: all types of actions will be defined here.
+[ActionTypes.ts]: all types of actions will be defined here.
 
 ```Typescript
 export const EMAIL_CHANGED = 'EMAIL_CHANGED';
@@ -210,7 +212,7 @@ export const LOGIN_USER_FAIL = 'LOGIN_USER_FAIL';
 ```
 
 Action creators: functions that create actions.  
-E.g. [auth.ts]: all actions related authentication.
+E.g. [Auth.ts]: all actions related authentication.
 
 ```Typescript
 function emailChanged(email: string) {
@@ -254,7 +256,7 @@ function bypass(state = initialState, action: { type: string; payload: any }) {
 }
 ```
 
-A reducer example here: [bypass.ts]
+A reducer example here: [Bypass.ts]
 
 Since we have more reducers, we combine reducers
 
@@ -262,7 +264,7 @@ Since we have more reducers, we combine reducers
 
 ```Typescript
 import { combineReducers } from 'redux';
-import { bypass } from './bypass';
+import { bypass } from './Bypass';
 
 // combine all reducers here
 const appReducers = combineReducers({
@@ -309,17 +311,54 @@ React Redux provides a `connect` function for you to connect your component to t
 
 [SignIn.tsx]
 
+[Learn more](https://react-redux.js.org/)
+
 ### Redux middleware
 
-#### Redux Thunk vs. Redux Saga
+It provides a third-party extension point between dispatching an action, and the moment it reaches the reducer. People use Redux middleware for logging, crash reporting, talking to an asynchronous API, routing, and more.
+
+#### User-defined middleware
+
+E.g. create a Logger middle to keep redux log
+
+Logger.ts
+
+```Typescript
+const Logger = (store: any) => (next: any) => (action: any) => {
+    console.group(action.type);
+    console.info('dispatching', action);
+    let result = next(action);
+    console.log('next state', store.getState());
+    console.groupEnd();
+    return result;
+};
+
+export default Logger;
+```
+
+Apply the middleware
+
+```Typescript
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(appReducers, composeEnhancer(applyMiddleware(ReduxThunk, Logger)));
+```
+
+[Logger.ts]
+
+[learn more](https://redux.js.org/advanced/middleware#seven-examples)
+
+#### Aasynchronous data flow
+
+Three popular redux middleware: redux-thunk, redux-promise and redux-saga to run asynchronous data flow in redux store
 
 [vscode-settings.json]: https://github.com/Catherine22/Front-end-warm-up/blob/master/vscode-settings.json
 [react-native-debugger]: https://github.com/jhen0409/react-native-debugger
 
 [Enable Dark Theme In Chrome DevTools] : https://developers.google.com/web/tools/chrome-devtools/customize/dark-theme  
-[actionTypes.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/actions/actionTypes.ts  
-[auth.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/actions/actionTypes.ts  
-[bypass.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/reducers/bypass.ts  
+[ActionTypes.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/actions/ActionTypes.ts  
+[Auth.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/actions/Auth.ts  
+[Bypass.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/reducers/Bypass.ts  
 [index.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/reducers/index.ts  
 [RootNavigator.tsx]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/views/RootNavigator.tsx  
-[SignIn.tsx]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/views/auth/SignIn.tsx
+[SignIn.tsx]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/views/auth/SignIn.tsx  
+[Logger.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/middleware/Logger.ts

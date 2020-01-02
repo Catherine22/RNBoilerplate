@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { bypass } from './bypass';
+import { bypass } from './Bypass';
 
 const appReducers = combineReducers({
     bypass

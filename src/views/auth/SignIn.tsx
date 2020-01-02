@@ -7,7 +7,7 @@ import CButton from '../../components/common/CButton';
 import CLink from '../../components/common/CLink';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { emailChanged, passwordChanged, signUp, signIn } from '../../actions/auth';
+import { emailChanged, passwordChanged, signUp, signIn } from '../../actions/Auth';
 
 interface OwnProps {
     navigation: NavigationStackProp;

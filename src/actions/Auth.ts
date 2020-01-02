@@ -4,7 +4,7 @@ import {
     LOGIN_USER_SUCCESS,
     LOGIN_USER_FAIL,
     LOGIN_USER
-} from './actionTypes';
+} from './ActionTypes';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 
