@@ -39,9 +39,9 @@ const signUp = (user: { email: string; password: string }) => {
         firebase
             .auth()
             .createUserWithEmailAndPassword(user.email, user.password)
-            .then(user => {
-                console.log('success', user);
-                loginUserSuccess(dispatch, user);
+            .then(result => {
+                console.log('success', result);
+                loginUserSuccess(dispatch, result.user);
             })
             .catch(error => {
                 // Handle Errors here.
@@ -59,9 +59,9 @@ const signIn = (user: { email: string; password: string }) => {
         firebase
             .auth()
             .signInWithEmailAndPassword(user.email, user.password)
-            .then(user => {
-                console.log('success', user);
-                loginUserSuccess(dispatch, user);
+            .then(result => {
+                console.log('success', result);
+                loginUserSuccess(dispatch, result.user);
             })
             .catch(error => {
                 // Handle Errors here.

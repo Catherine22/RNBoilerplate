@@ -155,6 +155,8 @@ module.exports = {
 
 ## Redux
 
+### Prerequisites
+
 1. install [react-native-debugger]
 2. apply the extension in your project
 
@@ -188,6 +190,125 @@ open "rndebugger://set-debugger-loc?host=localhost&port=8081"
 
 `⌘` + `D` => click `debug`
 
+#### Fundamentals
+
+-   Actions
+
+**What happened**
+
+Actions are payloads of information that send data from your application to your store. They are the only source of information for the store. You send them to the store using `store.dispatch()`.  
+You will have one actionTypes file and many action files in the actions directory:
+
+[actionTypes.ts]: all types of actions will be defined here.
+
+```Typescript
+export const EMAIL_CHANGED = 'EMAIL_CHANGED';
+export const PASSWORD_CHANGED = 'PASSWORD_CHANGED';
+export const LOGIN_USER = 'LOGIN_USER';
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+export const LOGIN_USER_FAIL = 'LOGIN_USER_FAIL';
+```
+
+Action creators: functions that create actions.  
+E.g. [auth.ts]: all actions related authentication.
+
+```Typescript
+function emailChanged(email: string) {
+    return {
+        type: EMAIL_CHANGED,
+        payload: email
+    };
+}
+```
+
+3. To automatically bind action creators to a `dispatch()`, you can use `bindActionCreators()`, we will talk about this later on.
+
+[Learn more](https://redux.js.org/basics/actions)
+
+-   Reducers
+
+**Shape actions**
+
+Reducers specify how the application's state changes in response to actions sent to the store. Remember that actions only describe what happened, but don't describe how the application's state changes.
+
+In this auth example, we want to store email and password. the initial state will be:
+
+```Typescript
+const initialState = {
+    email: '',
+    password: ''
+};
+```
+
+The fomula to handle actions is `(previousState, action) => nextState`
+
+```Typescript
+function bypass(state = initialState, action: { type: string; payload: any }) {
+    switch (action.type) {
+        case EMAIL_CHANGED:
+            // update object by using ES6 spread operator
+            return { ...state, email: action.payload };
+        default:
+            return state;
+    }
+}
+```
+
+A reducer example here: [bypass.ts]
+
+Since we have more reducers, we combine reducers
+
+[index.ts]
+
+```Typescript
+import { combineReducers } from 'redux';
+import { bypass } from './bypass';
+
+// combine all reducers here
+const appReducers = combineReducers({
+    bypass,
+    // reducer2,
+    // reducer3,
+    // other reducers
+});
+export default appReducers;
+```
+
+[Learn more](https://redux.js.org/basics/reducers)
+
+-   Store
+
+The store has the following responsibilities:
+
+1. Holds application state;
+2. Allows access to state via `getState()`;
+3. Allows state to be updated via `dispatch(action)`;
+4. Registers listeners via `subscribe(listener)`;
+5. Handles unregistering of listeners via the function returned by `subscribe(listener)`.
+
+Create the store.
+
+```Typescript
+import { createStore } from 'redux';
+const store = createStore(appReducers);
+```
+
+[Learn more](https://redux.js.org/basics/store)
+
+-   React redux
+
+1. `<Provider />`
+
+The `<Provider />` makes the Redux store available to any nested components that have been wrapped in the `connect()` function.
+
+[RootNavigator.tsx]
+
+2. `conncet()`
+
+React Redux provides a `connect` function for you to connect your component to the store.
+
+[SignIn.tsx]
+
 ### Redux middleware
 
 #### Redux Thunk vs. Redux Saga
@@ -195,4 +316,10 @@ open "rndebugger://set-debugger-loc?host=localhost&port=8081"
 [vscode-settings.json]: https://github.com/Catherine22/Front-end-warm-up/blob/master/vscode-settings.json
 [react-native-debugger]: https://github.com/jhen0409/react-native-debugger
 
-[Enable Dark Theme In Chrome DevTools] : https://developers.google.com/web/tools/chrome-devtools/customize/dark-theme
+[Enable Dark Theme In Chrome DevTools] : https://developers.google.com/web/tools/chrome-devtools/customize/dark-theme  
+[actionTypes.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/actions/actionTypes.ts  
+[auth.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/actions/actionTypes.ts  
+[bypass.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/reducers/bypass.ts  
+[index.ts]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/reducers/index.ts  
+[RootNavigator.tsx]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/views/RootNavigator.tsx  
+[SignIn.tsx]: https://github.com/Catherine22/RNBoilerplate/tree/master/src/views/auth/SignIn.tsx
