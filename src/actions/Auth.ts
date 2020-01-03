@@ -27,7 +27,7 @@ function passwordChanged(password: string) {
     };
 }
 
-const loginUserSuccess = async (dispatch: any, user: any) => {
+async function loginUserSuccess(dispatch: any, user: any) {
     dispatch({ type: LOGIN_USER_SUCCESS, payload: user });
     const refreshToken = ['@refreshToken', user.refreshToken];
     const email = ['@email', user.email];
@@ -37,50 +37,48 @@ const loginUserSuccess = async (dispatch: any, user: any) => {
     } catch (e) {
         console.error(e);
     }
-};
+}
 
-const loginUserFail = (dispatch: any, error: any) => {
+function loginUserFail(dispatch: any, error: any) {
     dispatch({ type: LOGIN_USER_FAIL, payload: error });
-};
+}
 
-const signUp = (user: { email: string; password: string }) => {
-    return (dispatch: any) => {
+function signUp(user: { email: string; password: string }) {
+    return async (dispatch: any) => {
         dispatch({ type: LOGIN_USER });
-        firebase
-            .auth()
-            .createUserWithEmailAndPassword(user.email, user.password)
-            .then(result => {
-                console.log('success', result);
-                loginUserSuccess(dispatch, result.user);
-            })
-            .catch(error => {
-                // Handle Errors here.
-                let errorCode = error.code;
-                let errorMessage = error.message;
-                console.warn('sign up error', errorCode, errorMessage);
-                loginUserFail(dispatch, error);
-            });
+        try {
+            const result = await firebase
+                .auth()
+                .createUserWithEmailAndPassword(user.email, user.password);
+            console.log('success', result);
+            loginUserSuccess(dispatch, result.user);
+        } catch (error) {
+            // Handle Errors here.
+            let errorCode = error.code;
+            let errorMessage = error.message;
+            console.warn('sign up error', errorCode, errorMessage);
+            loginUserFail(dispatch, error);
+        }
     };
-};
+}
 
-const signIn = (user: { email: string; password: string }) => {
-    return (dispatch: any) => {
+function signIn(user: { email: string; password: string }) {
+    return async (dispatch: any) => {
         dispatch({ type: LOGIN_USER });
-        firebase
-            .auth()
-            .signInWithEmailAndPassword(user.email, user.password)
-            .then(result => {
-                console.log('success', result);
-                loginUserSuccess(dispatch, result.user);
-            })
-            .catch(error => {
-                // Handle Errors here.
-                let errorCode = error.code;
-                let errorMessage = error.message;
-                console.warn('sign in error', errorCode, errorMessage);
-                loginUserFail(dispatch, error);
-            });
+        try {
+            const result = await firebase
+                .auth()
+                .signInWithEmailAndPassword(user.email, user.password);
+            console.log('success', result);
+            loginUserSuccess(dispatch, result.user);
+        } catch (error) {
+            // Handle Errors here.
+            let errorCode = error.code;
+            let errorMessage = error.message;
+            console.warn('sign in error', errorCode, errorMessage);
+            loginUserFail(dispatch, error);
+        }
     };
-};
+}
 
 export { emailChanged, passwordChanged, signIn, signUp };

@@ -12,6 +12,17 @@ const colors = {
     placeHolder: '#c3c3c3'
 };
 
-const common = StyleSheet.create({});
+const dimens = {
+    marginNavBar: 16
+};
 
-export { colors, common };
+const common = StyleSheet.create({
+    bigNumber: {
+        fontSize: 24
+    },
+    context: {
+        fontSize: 16
+    }
+});
+
+export { colors, common, dimens };
