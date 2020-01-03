@@ -9,7 +9,8 @@ const colors = {
     background: '#ffffff',
     surface: '#ffffff',
     error: '#b00020',
-    placeHolder: '#c3c3c3'
+    placeHolder: '#c3c3c3',
+    selectedItem: '#c3c3c3'
 };
 
 const dimens = {
