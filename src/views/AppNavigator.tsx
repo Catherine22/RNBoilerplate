@@ -1,6 +1,6 @@
 import DashboardNavigator from './dashboard/DashboardNavigator';
-import RepoNavigator from './repo/RepoNavigator';
-import ProfileNavigator from './profile/ProfileNavigator';
+import PostsNavigator from './posts/PostsNavigator';
+import AlbumsNavigator from './albums/AlbumsNavigator';
 import SettingsNavigator from './settings/SettingsNavigator';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { colors } from '../constants/Styles';
@@ -12,16 +12,16 @@ const routeConfigs = {
             title: 'Dashboard'
         })
     },
-    Repo: {
-        screen: RepoNavigator,
+    Posts: {
+        screen: PostsNavigator,
         navigationOptions: () => ({
-            title: 'Repo'
+            title: 'Posts'
         })
     },
-    Profile: {
-        screen: ProfileNavigator,
+    Albums: {
+        screen: AlbumsNavigator,
         navigationOptions: () => ({
-            title: 'Profile'
+            title: 'Albums'
         })
     },
     Settings: {

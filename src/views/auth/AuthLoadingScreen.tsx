@@ -17,7 +17,7 @@ class AuthLoadingScreen extends React.Component<Props> {
     }
 
     initFirebase = async () => {
-        !firebase.app.length && firebase.initializeApp(firebaseConfig);
+        firebase.initializeApp(firebaseConfig);
     };
 
     bootstrapAsync = async () => {

@@ -1,17 +1,17 @@
-import Repo from './Repo';
+import Albums from './Albums';
 import { createStackNavigator } from 'react-navigation-stack';
 
 const routeConfigs = {
-    Repo: {
-        screen: Repo,
+    Albums: {
+        screen: Albums,
         navigationOptions: () => ({
-            title: 'Repo'
+            title: 'Albums'
         })
     }
 };
 
 const stackNavigatorConfig = {
-    initialRouteName: 'Repo',
+    initialRouteName: 'Albums',
     defaultNavigationOptions: {
         title: 'Unknown',
         mode: 'card', // [card, modal]
@@ -19,5 +19,5 @@ const stackNavigatorConfig = {
     }
 };
 
-const RepoNavigator = createStackNavigator(routeConfigs, stackNavigatorConfig);
-export default RepoNavigator;
+const AlbumsNavigator = createStackNavigator(routeConfigs, stackNavigatorConfig);
+export default AlbumsNavigator;
