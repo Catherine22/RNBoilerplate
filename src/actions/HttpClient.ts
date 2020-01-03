@@ -1,4 +1,4 @@
-import { GET_ALBUMS, FETCH_DATA_SUCCESS, FETCH_DATA_FAIL } from '../actions/ActionTypes';
+import { GET_ALBUMS, GET_POSTS, FETCH_DATA_SUCCESS, FETCH_DATA_FAIL } from './ActionTypes';
 import { DOMAIN, PATH } from '../constants/Constants';
 import { DEFAULT_HEADERS, GET } from '../services/HttpClient';
 
@@ -31,4 +31,24 @@ function getAlbums() {
     };
 }
 
-export { getAlbums };
+function getPosts() {
+    return async (dispatch: any) => {
+        dispatch({ type: GET_POSTS });
+        try {
+            const response = await fetch(`${DOMAIN}${PATH.POSTS}`, {
+                method: GET,
+                headers: DEFAULT_HEADERS
+            });
+            if (response.ok && response.status === 200) {
+                let responseJson = await response.json();
+                fetchDataSuccess(dispatch, responseJson);
+            } else {
+                fetchDataFail(dispatch, null);
+            }
+        } catch (error) {
+            fetchDataFail(dispatch, error);
+        }
+    };
+}
+
+export { getAlbums, getPosts };

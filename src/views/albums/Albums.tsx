@@ -9,9 +9,7 @@ import {
 } from 'react-native';
 import { NavigationStackProp } from 'react-navigation-stack';
 import { colors, common } from '../../constants/Styles';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getAlbums } from '../../actions/Albums';
 
 interface OwnProps {
     navigation: NavigationStackProp<{ title: string }>;
@@ -19,14 +17,9 @@ interface OwnProps {
 
 interface StateProps {
     albums: [];
-    posts: [];
 }
 
-interface DispatchProps {
-    getAlbums: () => void;
-}
-
-type Props = StateProps & DispatchProps & OwnProps;
+type Props = StateProps & OwnProps;
 
 interface State {
     selected: Array<number>;
@@ -92,17 +85,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state: any) => {
-    const { albums } = state.fetchData;
+    const { albums } = state.fetchAlbums;
     return { albums };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
-    return bindActionCreators(
-        {
-            getAlbums
-        },
-        dispatch
-    );
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Albums);
+export default connect(mapStateToProps)(Albums);

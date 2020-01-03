@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import { bypass } from './Bypass';
-import { fetchData } from './Albums';
+import { fetchAlbums } from './Albums';
+import { fetchPosts } from './Posts';
 
 const appReducers = combineReducers({
     bypass,
-    fetchData
+    fetchAlbums,
+    fetchPosts
 });
 export default appReducers;

@@ -5,7 +5,7 @@ const initialState = {
     error: null
 };
 
-function fetchData(state = initialState, action: { type: string; payload: any }) {
+function fetchAlbums(state = initialState, action: { type: string; payload: any }) {
     switch (action.type) {
         case GET_ALBUMS:
             return { ...state, albums: action.payload };
@@ -20,4 +20,4 @@ function fetchData(state = initialState, action: { type: string; payload: any })
     }
 }
 
-export { fetchData };
+export { fetchAlbums };
