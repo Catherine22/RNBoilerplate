@@ -2,6 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/Catherine22/RNBoilerplate.svg?style=svg)](https://circleci.com/gh/Catherine22/RNBoilerplate)
 
+React Native boilerplate (Typescript + redux + redux-thunk)
+
 ## ESLint and Prettier
 
 1. add .eslintrc.js
