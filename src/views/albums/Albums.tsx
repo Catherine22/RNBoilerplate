@@ -40,10 +40,6 @@ class Albums extends React.Component<Props, State> {
         };
     }
 
-    componentDidMount() {
-        this.props.getAlbums();
-    }
-
     render() {
         let contain =
             this.props.albums && this.props.albums.length > 0 ? (
