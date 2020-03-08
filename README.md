@@ -119,11 +119,7 @@ Type `⌘` + `⇧` + `p` to open settings.json
         "noEmit": true,
         "strict": true,
         "target": "esnext",
-
-        // .json file imports
         "resolveJsonModule": true,
-
-        // Path Aliases
         "baseUrl": ".",
         "paths": {
             "@": ["src/*"],
